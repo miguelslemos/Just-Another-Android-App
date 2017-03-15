@@ -8,7 +8,6 @@ buildscript {
         classpath "com.android.tools.build:gradle:$versions.androidPluginVersion"
         classpath "me.tatarka:gradle-retrolambda:$versions.retrolambdaPluginVersion"
         classpath "com.jakewharton:butterknife-gradle-plugin:$versions.butterknifeVersion"
-        classpath "com.github.triplet.gradle:play-publisher:$versions.playPublisherPluginVersion"
         classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:$versions.dexCountPluginVersion"
         classpath "io.fabric.tools:gradle:$versions.fabricPluginVersion"
     }
@@ -17,7 +16,7 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
-apply plugin: 'com.github.triplet.play' // Plugin to publish apk to play store.
+//apply plugin: 'com.github.triplet.play' // Plugin to publish apk to play store.
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.getkeepsafe.dexcount'
@@ -168,14 +167,14 @@ android {
 }
 
 // Plugin to manage automated publishing to the playstore. See https://github.com/Triple-T/gradle-play-publisher
-play {
-    serviceAccountEmail = '560654334828-compute@developer.gserviceaccount.com'
-    pk12File = file(pk12FileLocation) // See gradle.properties for details
-    track = releaseTrack // See gradle.properties for details
-    uploadImages = true
-    userFraction = 0.05 // Only necessary for 'rollout'. This means that a rollout for 5% of the users is performed.
-    untrackOld = true // will remove the 'alpha' release when a new higher version code 'beta' is uploaded.
-}
+//play {
+//    serviceAccountEmail = '560654334828-compute@developer.gserviceaccount.com'
+//    pk12File = file(pk12FileLocation) // See gradle.properties for details
+//    track = releaseTrack // See gradle.properties for details
+//    uploadImages = true
+//    userFraction = 0.05 // Only necessary for 'rollout'. This means that a rollout for 5% of the users is performed.
+//    untrackOld = true // will remove the 'alpha' release when a new higher version code 'beta' is uploaded.
+//}
 
 // Settings for the retrolambda plugin. See https://github.com/evant/gradle-retrolambda
 retrolambda {
@@ -325,5 +324,8 @@ dependencies {
 
     // Mocking the backend
     androidTestCompile "com.squareup.okhttp3:mockwebserver:$versions.okhttpMockWebServerVersion"
+
+
+
 
 }

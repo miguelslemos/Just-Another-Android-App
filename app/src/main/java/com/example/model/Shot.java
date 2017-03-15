@@ -1,11 +1,13 @@
 package com.example.model;
 
+import android.os.Parcelable;
+
 import com.google.auto.value.AutoValue;
 
 import javax.annotation.Nullable;
 
 @AutoValue
-public abstract class Shot {
+public abstract class Shot implements Parcelable {
 
     @Nullable
     public abstract String getTitle();
@@ -26,5 +28,6 @@ public abstract class Shot {
 
         public abstract Shot build();
     }
+
 
 }

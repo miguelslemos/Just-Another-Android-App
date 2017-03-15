@@ -14,5 +14,5 @@ public interface RestService {
     @GET("/v1/shots")
     @Headers(DO_AUTHENTICATION)
     Single<List<ShotResponse>> getShots();
-
+    
 }

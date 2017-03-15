@@ -29,7 +29,7 @@ import java.util.List;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class MainActivity extends BaseActivity<MainActivityComponent, MainView, MainPresenter, MainActivityViewState> implements MainView {
+public class MainActivity extends BaseActivity<MainActivityComponent, MainView, MainPresenter, MainActivityViewState> implements MainView, Callback {
 
     private static final int RECYCLER_VIEW_SPAN_COUNT = 2;
 
@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity<MainActivityComponent, MainView, 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), RECYCLER_VIEW_SPAN_COUNT, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(shotsAdapter);
+        shotsAdapter.setCallback(this);
     }
 
     @Override
@@ -111,4 +112,8 @@ public class MainActivity extends BaseActivity<MainActivityComponent, MainView, 
         getPresenter().fetchShots();
     }
 
+    @Override
+    public void onShotClicked(Shot shot) {
+
+    }
 }

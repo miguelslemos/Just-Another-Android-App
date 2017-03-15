@@ -9,6 +9,7 @@ import com.example.R;
 import com.example.model.Shot;
 import com.example.util.other.ViewHolderFactory;
 import com.example.util.testing.ForTestingPurposes;
+
 import timber.log.Timber;
 
 import java.util.ArrayList;
@@ -17,7 +18,9 @@ import java.util.List;
 public class ShotsAdapter extends RecyclerView.Adapter<ShotViewHolder> {
 
     private List<Shot> shots;
+    private Callback mCallback;
     private final ViewHolderFactory<ShotViewHolder> shotViewHolderFactory;
+
 
     public ShotsAdapter(ViewHolderFactory<ShotViewHolder> shotViewHolderFactory) {
         this.shots = new ArrayList<>();
@@ -30,16 +33,22 @@ public class ShotsAdapter extends RecyclerView.Adapter<ShotViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void setCallback(Callback callback) {
+        this.mCallback = callback;
+
+    }
+
     @Override
     public ShotViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shot_adapter_row_item, parent, false);
-        return shotViewHolderFactory.createViewHolder(view);
+        return shotViewHolderFactory.createViewHolder(view, mCallback);
     }
 
     @Override
     public void onBindViewHolder(ShotViewHolder holder, int position) {
         Shot shot = shots.get(position);
-        holder.bindImage(shot.getUrl(), shot.getTitle());
+        holder.bind(shot);
+
     }
 
     @Override
@@ -52,5 +61,6 @@ public class ShotsAdapter extends RecyclerView.Adapter<ShotViewHolder> {
     public List<Shot> getData() {
         return shots;
     }
+
 
 }

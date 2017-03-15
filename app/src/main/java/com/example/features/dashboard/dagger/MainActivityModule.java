@@ -3,6 +3,7 @@ package com.example.features.dashboard.dagger;
 import android.support.test.espresso.idling.CountingIdlingResource;
 import com.example.features.dashboard.model.ShotMapper;
 import com.example.features.dashboard.presenter.MainPresenter;
+import com.example.features.dashboard.view.Callback;
 import com.example.features.dashboard.view.MainActivityViewState;
 import com.example.features.dashboard.view.ShotViewHolder;
 import com.example.features.dashboard.view.ShotViewHolderFactory;
@@ -31,6 +32,7 @@ public final class MainActivityModule {
 
         return new MainActivityViewState();
     }
+
 
     @Provides
     public static ShotsAdapter providesShotsAdapter(ViewHolderFactory<ShotViewHolder> shotViewHolderFactory) {
